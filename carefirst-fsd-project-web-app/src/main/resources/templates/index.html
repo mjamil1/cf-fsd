@@ -1,0 +1,56 @@
+	<!DOCTYPE html>
+	<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+	<meta charset="ISO-8859-1">
+	<title>CareFirst Employee System</title>
+	
+	<link rel="stylesheet"
+	 href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	 integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	 crossorigin="anonymous">
+	 
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+	 
+	</head>
+	<body>
+	 <div class="w3-container">
+		 <h1>CF Employee System</h1> 
+	     <a th:href="@{/showNewEmployeeForm}" class="btn btn-primary btn-sm mb-3"> Add Employee </a>
+		 <table style="width: 100%" border="2" class = "w3-table">
+		   <thead>
+		    <tr>
+		     <th>First Name</th>
+		     <th>Last Name</th>
+		     <th>Email</th>
+		     <th>Job Title</th>
+		     <th>Department</th>
+		     <th>Location</th>
+		     <th>Reporting Manager</th>
+		     <th>Phone Number</th>
+		     <th>Birth Date</th>
+		     <th>Start Date</th>
+		    </tr>
+		   </thead>
+		   <tbody>
+		    <tr th:each="employee : ${listEmployees}">
+		     <td th:text="${employee.firstName}"></td>
+		     <td th:text="${employee.lastName}"></td>
+		     <td th:text="${employee.email}"></td>
+		     <td th:text="${employee.jobTitle}"></td>
+		     <td th:text="${employee.department}"></td>
+		     <td th:text="${employee.location}"></td>
+		     <td th:text="${employee.reportingManager}"></td>
+		     <td th:text="${employee.phoneNumber}"></td>
+		     <td th:text="${employee.birthDate}"></td>
+		     <td th:text="${employee.startDate}"></td>
+		     <td> <a th:href="@{/showFormForUpdate/{id}(id=${employee.id})}" class="btn btn-success">Update</a>
+		     	  <a th:href="@{/deleteEmployee/{id}(id=${employee.id})}" class="btn btn-danger">Delete</a>
+		     	  <a th:href="@{/showFormForView/{id}(id=${employee.id})}" class="btn btn-primary">View</a>
+		     </td>
+		    </tr>
+		   </tbody>
+		 </table>
+	 </div>
+	</body>
+	</html>
